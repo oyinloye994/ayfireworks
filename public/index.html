@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ay Fireworks And Events | Home of Quality Fireworks, Lagos</title>
+<meta name="description" content="Wholesale and retail fireworks in Lagos. Cakes, display shots, color smoke and more. All-state delivery. Chat with us on WhatsApp for prices and availability.">
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0b0b0c; --card:#111113; --line:#2a2a2d; --paper:#e2e0dd; --paper-line:#c4c1bd;
+  --text:#f2f0ed; --dark:#141415; --mute:#a6a29c; --mute-d:#5b5753;
+  --red:#d71920; --red-d:#b5131a; --ok:#37b57e; --low:#e9913d; --out:#8a8a8f;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--black);color:var(--text);font:400 16px/1.55 "Instrument Sans",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0)}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;line-height:1.05}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+header{position:sticky;top:0;z-index:20;background:rgba(11,11,12,.95);backdrop-filter:blur(8px);border-bottom:2px solid var(--red);padding-top:env(safe-area-inset-top,0)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font:800 18px "Bricolage Grotesque",sans-serif;text-decoration:none;color:#fff;display:inline-flex;align-items:center;gap:10px}
+.brand img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;font-weight:600;text-decoration:none;padding:12px 20px;border-radius:3px;border:0;cursor:pointer;font-size:15px}
+.btn:hover{background:var(--red-d)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid #5a5a60}
+.btn.ghost:hover{background:#1d1d20}
+.btn.small{padding:9px 14px;font-size:14px}
+
+.hero{position:relative;overflow:hidden;min-height:80vh;display:flex;align-items:flex-end;background:var(--black)}
+.hero canvas,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero video{opacity:.5}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,0) 35%,var(--black) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:56px;padding-top:120px}
+.hero h1{font-size:clamp(44px,10vw,104px);font-weight:800;max-width:10ch;color:#fff}
+.hero p{max-width:46ch;margin:18px 0 26px;color:#c9c5be;font-size:18px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));background:var(--red);color:#fff}
+.strip div{padding:22px 20px;border-right:1px solid rgba(0,0,0,.28)}
+.strip div:last-child{border-right:0}
+.strip b{display:block;font:800 17px "Bricolage Grotesque",sans-serif}
+.strip span{color:rgba(255,255,255,.88);font-size:14px}
+
+section{padding:64px 0}
+h2{font-size:clamp(30px,5vw,46px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--mute);margin-bottom:28px;max-width:52ch}
+.paper{background:var(--black);color:var(--text)}
+.deep{background:#150708;border-top:1px solid #3a1215}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tab{background:transparent;color:var(--text);border:1px solid #5a5a60;padding:9px 16px;border-radius:3px;cursor:pointer;font:600 14px "Instrument Sans",sans-serif}
+.tab[aria-pressed="true"]{background:var(--red);color:#fff;border-color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.item{background:var(--card);color:var(--text);border-top:3px solid var(--red);border-radius:3px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.media{aspect-ratio:4/5;background:#1a1a1d;position:relative;display:grid;place-items:center;overflow:hidden}
+.media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph{font:800 54px "Bricolage Grotesque",sans-serif;color:#2c2c31;text-align:center;line-height:1;padding:10px}
+.tag{position:absolute;left:10px;top:10px;z-index:2;font:600 12px "Instrument Sans",sans-serif;padding:4px 9px;border-radius:2px;background:rgba(0,0,0,.85);border:1px solid currentColor}
+.tag.ok{color:var(--ok)} .tag.low{color:var(--low)} .tag.out{color:var(--out)}
+.info{padding:14px 16px 4px}
+.info h3{font-size:21px;font-weight:800;color:#fff}
+.info p{color:var(--mute);font-size:14px;margin-top:4px}
+.item .btn{margin:14px 16px 16px}
+.item .btn[aria-disabled="true"]{background:#26262a;color:var(--mute);pointer-events:none}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border:1px solid var(--line);counter-reset:s}
+.steps div{padding:24px 22px;border-right:1px solid var(--line);counter-increment:s}
+.steps div:last-child{border-right:0}
+.steps div::before{content:counter(s);font:800 40px "Bricolage Grotesque",sans-serif;color:var(--red)}
+.steps h3{font-size:20px;margin:8px 0 6px;color:#fff}
+.steps p{color:var(--mute);font-size:15px}
+
+footer{background:#000;border-top:3px solid var(--red);padding:40px 0 60px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;gap:24px;justify-content:space-between;flex-wrap:wrap}
+footer b{color:#fff}
+
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0));z-index:30;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+
+@media (max-width:640px){.strip div{border-right:0;border-bottom:1px solid rgba(0,0,0,.28)}.steps div{border-right:0;border-bottom:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="images/logo.jpg" alt="AY Fireworks logo">
+      <span>Ay Fireworks And Events</span>
+    </a>
+    <a class="btn small" data-wa="Hello Ay Fireworks, I would like to make an enquiry.">WhatsApp us</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <!-- Optional: put a short looping video named hero.mp4 next to this file and it will play here. -->
+    <video id="herovid" autoplay muted loop playsinline aria-hidden="true"></video>
+    <div class="wrap">
+      <h1>Light up your night.</h1>
+      <p>Home of quality fireworks in Lagos. Cakes, display shots and color smoke for weddings, parties and New Year. Wholesale and retail.</p>
+      <div class="row">
+        <a class="btn" href="#catalogue">See the catalogue</a>
+        <a class="btn ghost" data-wa="Hello Ay Fireworks, I would like to know the prices and what is available.">Ask for prices</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div><b>Wholesale and retail</b><span>Buy one piece or a full order</span></div>
+    <div><b>All-state delivery</b><span>We ship across Nigeria</span></div>
+    <div><b>Registered business</b><span>CAC registered, sourced direct</span></div>
+    <div><b>18 and above only</b><span>We do not sell to underage</span></div>
+  </div>
+
+  <section id="catalogue" class="paper">
+    <div class="wrap">
+      <h2>Catalogue</h2>
+      <p class="sub">Prices change with stock, so we quote you live on WhatsApp. Tap any item to ask for today’s price and availability.</p>
+      <div class="tabs" id="tabs" role="group" aria-label="Filter by category"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="deep">
+    <div class="wrap">
+      <h2>How to order</h2>
+      <p class="sub">No account and no checkout. You talk to us directly.</p>
+      <div class="steps">
+        <div><h3>Pick your items</h3><p>Browse the catalogue and tap the WhatsApp button on what you like.</p></div>
+        <div><h3>Get your price</h3><p>We reply with today’s price and what is in stock.</p></div>
+        <div><h3>Pay and receive</h3><p>Pick up in store or get delivery to any state.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Ay Fireworks And Events</b><br>Home of quality fireworks<br>Lagos, Nigeria</div>
+    <div><b>Contact</b><br><a href="tel:+2348127173032">+234 812 717 3032</a><br>Lagos Island<br><a href="https://instagram.com/ayfireworks112" target="_blank" rel="noopener">Instagram: @ayfireworks112</a></div>
+    <div>Fireworks are for adults 18 and above.<br>Handle with care and follow safety instructions.</div>
+  </div>
+</footer>
+
+<a class="btn fab" data-wa="Hello Ay Fireworks, I would like to make an enquiry.">Chat on WhatsApp</a>
+
+<script>
+/* WhatsApp Configuration */
+const PHONE = "2348127173032";
+
+/* Fallback default products if offline or backend is unreachable */
+const DEFAULT_PRODUCTS = [
+  {
+    "id": "color-flower-9505",
+    "name": "Color Flower",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "red-firecracker-pack-with-starburst-labels-1794407586757-6355.png"
+  },
+  {
+    "id": "25-shot-cake",
+    "name": "25 Shot Cake",
+    "cat": "Cakes",
+    "status": "ok",
+    "image": "colour-cake-fireworks-stack-1794408149764-2263.png"
+  },
+  {
+    "id": "49-shot-cake",
+    "name": "49 Shot Cake",
+    "cat": "Cakes",
+    "status": "ok",
+    "image": "golden-shores-fireworks-stack-1794408122460-6571.png"
+  },
+  {
+    "id": "100-shot-cake",
+    "name": "100 Shot Cake",
+    "cat": "Cakes",
+    "status": "ok",
+    "image": "ultimate-celebration-fireworks-cake-1794408179518-139.png"
+  },
+  {
+    "id": "5-shot-display",
+    "name": "5 Shot Display",
+    "cat": "Display shots",
+    "status": "ok",
+    "image": "colorful-roman-candle-fireworks-pack-1-1794407887584-9383.png"
+  },
+  {
+    "id": "8-shot-display",
+    "name": "8 Shot Display",
+    "cat": "Display shots",
+    "status": "ok",
+    "image": "colorful-roman-candle-fireworks-pack-2-1794408342383-8121.png"
+  },
+  {
+    "id": "10-shot-display",
+    "name": "10 Shot Display",
+    "cat": "Display shots",
+    "status": "ok",
+    "image": "colorful-roman-candle-fireworks-packaging-1794408214677-8025.png"
+  },
+  {
+    "id": "12-shot-display",
+    "name": "12 Shot Display",
+    "cat": "Display shots",
+    "status": "ok",
+    "image": "colorful-triple-roman-candle-fireworks-pack-1-1794407806767-5130.png"
+  },
+  {
+    "id": "10-ball",
+    "name": "10 Ball",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "colorful-roman-candle-fireworks-pack-1794407844336-2156.png"
+  },
+  {
+    "id": "dadi-single-voice",
+    "name": "Dadi Single Voice",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "dadi-single100-red-fireworks-box-1794408585592-8529.png"
+  },
+  {
+    "id": "black-widow",
+    "name": "Black Widow",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "black-widow-crown-fireworks-box-1794408548604-491.png"
+  },
+  {
+    "id": "crazy-robot",
+    "name": "Crazy Robot",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "crazy-robot-fireworks-box-1-1794408482876-4782.png"
+  },
+  {
+    "id": "celebration-thunder",
+    "name": "Celebration Thunder",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "celebration-cracker-thunder-fireworks-box-1794408448785-5823.png"
+  },
+  {
+    "id": "super-god-of-war",
+    "name": "Super God of War",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "super-god-of-war-fireworks-box-1-1794408517470-4500.png"
+  },
+  {
+    "id": "color-smoke",
+    "name": "Color Smoke",
+    "cat": "Smoke",
+    "status": "ok",
+    "image": "colorful-fireworks-display-assortment-1794407578167-3617.png"
+  }
+];
+
+let PRODUCTS = [...DEFAULT_PRODUCTS];
+
+const LABEL = {ok:"Available", low:"Few left", out:"Sold out"};
+const wa = t => `https://wa.me/${PHONE}?text=${encodeURIComponent(t)}`;
+document.querySelectorAll("[data-wa]").forEach(a => {a.href = wa(a.dataset.wa); a.target = "_blank"; a.rel = "noopener";});
+
+const tabs = document.getElementById("tabs"), grid = document.getElementById("grid");
+let current = "All";
+
+function render(){
+  const cats = ["All", ...new Set(PRODUCTS.map(p => p.cat).filter(Boolean))];
+  tabs.innerHTML = "";
+  cats.forEach(c => {
+    const b = document.createElement("button");
+    b.className = "tab"; b.textContent = c; b.setAttribute("aria-pressed", c === current);
+    b.onclick = () => {current = c; render();};
+    tabs.appendChild(b);
+  });
+  grid.innerHTML = "";
+  PRODUCTS.filter(p => current === "All" || p.cat === current).forEach(p => {
+    const out = p.status === "out";
+    const el = document.createElement("article");
+    el.className = "item";
+    const initials = (p.name || "").split(" ").slice(0,2).join(" ");
+    const hasImage = p.image && p.image.trim() !== "";
+    const imgSrc = hasImage ? ((p.image.startsWith("http") || p.image.startsWith("/")) ? p.image : `images/${p.image}`) : "";
+
+    el.innerHTML = `
+      <div class="media">
+        <span class="tag ${p.status}">${LABEL[p.status] || p.status}</span>
+        ${hasImage 
+          ? `<img src="${imgSrc}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='block';">
+             <span class="ph" style="display:none">${initials}</span>`
+          : `<span class="ph">${initials}</span>`
+        }
+      </div>
+      <div class="info"><h3></h3><p>${p.cat || ''}</p></div>
+      <a class="btn" ${out ? 'aria-disabled="true"' : ""} target="_blank" rel="noopener">${out ? "Sold out" : "Ask price on WhatsApp"}</a>`;
+    el.querySelector("h3").textContent = p.name;
+    el.querySelector(".btn").href = wa(`Hello Ay Fireworks, I’m interested in the ${p.name}. What is the price and is it available?`);
+    grid.appendChild(el);
+  });
+}
+
+// Initial static render
+render();
+
+// Dynamic loading from Backend API
+async function loadLiveProducts() {
+  try {
+    const res = await fetch("/api/products");
+    if (!res.ok) return;
+    const json = await res.json();
+    if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+      PRODUCTS = json.data;
+      render();
+    }
+  } catch (err) {
+    // If backend is not running or opening directly via file://, keep fallback products
+    console.log("Using static default catalogue.");
+  }
+}
+loadLiveProducts();
+
+/* hero video: only shows if hero.mp4 exists */
+const hv = document.getElementById("herovid");
+hv.src = "hero.mp4"; hv.onerror = () => hv.remove();
+
+/* Fireworks animation in the hero */
+(function(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const c = document.getElementById("sky"), x = c.getContext("2d");
+  let W, H, bursts = [];
+  const cols = ["#d71920","#ff4d4d","#f2f0ed","#ff8a3c","#ffffff"];
+  function size(){W = c.width = c.offsetWidth; H = c.height = c.offsetHeight;}
+  addEventListener("resize", size); size();
+  function launch(){
+    const col = cols[Math.floor(Math.random()*cols.length)], n = 60;
+    bursts.push({x:W*(.15+Math.random()*.7), y:H*(.12+Math.random()*.4), t:0, col,
+      p:Array.from({length:n},(_,i)=>({a:i/n*6.283+Math.random()*.1, v:1.2+Math.random()*2.2}))});
+  }
+  setInterval(launch, 1400); launch();
+  (function frame(){
+    x.fillStyle = "rgba(11,11,12,.2)"; x.fillRect(0,0,W,H);
+    bursts = bursts.filter(b => b.t < 90);
+    bursts.forEach(b => {
+      b.t++;
+      b.p.forEach(p => {
+        const d = p.v * Math.sqrt(b.t) * 9, g = b.t*b.t*.012;
+        x.globalAlpha = Math.max(0, 1 - b.t/90);
+        x.fillStyle = b.col;
+        x.fillRect(b.x + Math.cos(p.a)*d, b.y + Math.sin(p.a)*d + g, 2.2, 2.2);
+      });
+    });
+    x.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  })();
+})();
+</script>
+</body>
+</html>

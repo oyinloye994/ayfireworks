@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Admin Dashboard | Ay Fireworks And Events</title>
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0b0b0c;
+  --card: #131316;
+  --card-hover: #19191d;
+  --line: #27272b;
+  --text: #f2f0ed;
+  --mute: #a6a29c;
+  --mute-d: #5b5753;
+  --red: #d71920;
+  --red-d: #b5131a;
+  --ok: #37b57e;
+  --low: #e9913d;
+  --out: #8a8a8f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--black);
+  color: var(--text);
+  font: 400 15px/1.5 "Instrument Sans", system-ui, sans-serif;
+  padding-bottom: 60px;
+}
+h1, h2, h3, h4 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  line-height: 1.1;
+}
+a { color: inherit; text-decoration: none; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(11, 11, 12, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--red);
+}
+.header-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font: 800 19px "Bricolage Grotesque", sans-serif;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand span {
+  background: var(--red);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 4px;
+  border: 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+.btn:hover { background: var(--red-d); }
+.btn.ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid #45454d;
+}
+.btn.ghost:hover {
+  background: #202024;
+  border-color: #666;
+}
+.btn.sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+.btn.danger {
+  background: #2c1214;
+  color: #ff6b70;
+  border: 1px solid #5a1e22;
+}
+.btn.danger:hover {
+  background: var(--red-d);
+  color: #fff;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+/* Stats Row */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 18px 20px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.stat-num {
+  font: 800 32px "Bricolage Grotesque", sans-serif;
+  color: #fff;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--mute);
+  margin-top: 4px;
+}
+
+/* Main Grid Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add / Edit Card */
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  border-radius: 6px;
+  padding: 24px;
+  position: sticky;
+  top: 84px;
+}
+.form-card h2 {
+  font-size: 22px;
+  margin-bottom: 6px;
+  color: #fff;
+}
+.form-card .subtitle {
+  color: var(--mute);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #ddd;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: #0b0b0c;
+  border: 1px solid #333339;
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 14px;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+/* Upload drop zone */
+.dropzone {
+  border: 2px dashed #404048;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  background: #0d0d10;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.dropzone:hover, .dropzone.dragover {
+  border-color: var(--red);
+  background: #170d0e;
+}
+.dropzone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.dropzone-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+.dropzone-text {
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+}
+.dropzone-sub {
+  font-size: 12px;
+  color: var(--mute);
+  margin-top: 3px;
+}
+.preview-container {
+  margin-top: 10px;
+  position: relative;
+  display: none;
+}
+.preview-img {
+  width: 100%;
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+.remove-preview {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0,0,0,0.8);
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Products List View */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.list-header h2 {
+  font-size: 26px;
+  color: #fff;
+}
+.search-bar {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  max-width: 400px;
+}
+.search-bar input {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font: inherit;
+}
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+.category-filter {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.filter-btn {
+  background: var(--card);
+  color: var(--mute);
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.filter-btn.active {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+
+/* Products Table / Cards */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.product-card:hover {
+  border-color: #3f3f47;
+}
+.product-media {
+  aspect-ratio: 4/3;
+  background: #19191d;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-ph {
+  font: 800 24px "Bricolage Grotesque", sans-serif;
+  color: #40404a;
+  text-align: center;
+  padding: 10px;
+}
+.status-pill {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 2px;
+  background: rgba(0,0,0,0.85);
+  border: 1px solid currentColor;
+}
+.status-pill.ok { color: var(--ok); }
+.status-pill.low { color: var(--low); }
+.status-pill.out { color: var(--out); }
+
+.quick-upload-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+.product-media:hover .quick-upload-overlay {
+  opacity: 1;
+}
+.quick-upload-btn {
+  background: rgba(215, 25, 32, 0.9);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 12px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.product-body {
+  padding: 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.product-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.product-cat {
+  font-size: 12px;
+  color: var(--mute);
+  margin-bottom: 12px;
+}
+.product-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 6px;
+}
+.product-actions button {
+  flex: 1;
+}
+
+/* Edit Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-backdrop.open { display: flex; }
+.modal-box {
+  background: #151518;
+  border: 1px solid #333;
+  border-top: 3px solid var(--red);
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  padding: 26px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.modal-header h3 { font-size: 20px; color: #fff; }
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--mute);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Toast message */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 200;
+  background: #1b1b20;
+  color: #fff;
+  border: 1px solid #333;
+  border-left: 4px solid var(--ok);
+  padding: 14px 20px;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  font-weight: 600;
+  font-size: 14px;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.toast.error {
+  border-left-color: var(--red);
+}
+
+/* Login Screen */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 11, 12, 0.98);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.login-box {
+  background: #141417;
+  border: 1px solid #2a2a30;
+  border-top: 4px solid var(--red);
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  padding: 34px 28px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+  text-align: center;
+}
+.login-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--red);
+  margin: 0 auto 14px;
+  object-fit: cover;
+  display: block;
+}
+.login-title {
+  font: 800 24px "Bricolage Grotesque", sans-serif;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.login-sub {
+  color: var(--mute);
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+.login-form {
+  text-align: left;
+}
+.login-error {
+  background: #331215;
+  color: #ff757a;
+  border: 1px solid #6b1f26;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: none;
+}
+.password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-wrap input {
+  padding-right: 42px;
+}
+.password-toggle {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--mute);
+  cursor: pointer;
+  padding: 6px;
+  font-size: 14px;
+}
+.user-badge {
+  font-size: 12px;
+  color: var(--mute);
+  padding: 5px 10px;
+  background: #18181c;
+  border: 1px solid #33333a;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+#dashboardApp {
+  display: none;
+}
+
+/* Hidden file inputs for quick uploads */
+#standaloneFileInput { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Login Modal / Screen -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-box">
+    <img src="images/logo.jpg" alt="Logo" class="login-logo">
+    <h1 class="login-title">Ay Fireworks Admin</h1>
+    <p class="login-sub">Sign in to manage catalog, upload images & edit products</p>
+
+    <div class="login-error" id="loginError"></div>
+
+    <form class="login-form" id="loginForm">
+      <div class="form-group">
+        <label for="loginEmail">Email Address</label>
+        <input type="email" id="loginEmail" placeholder="oyinloye994@gmail.com" required autocomplete="email" value="oyinloye994@gmail.com">
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <div class="password-wrap">
+          <input type="password" id="loginPassword" placeholder="Enter password" required autocomplete="current-password">
+          <button type="button" class="password-toggle" id="togglePasswordBtn" title="Show/Hide Password">👁️</button>
+        </div>
+      </div>
+      <button type="submit" class="btn" style="width:100%; margin-top:8px; padding:12px;" id="loginSubmitBtn">
+        Sign In to Dashboard
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Main Admin Dashboard (Visible only after login) -->
+<div id="dashboardApp">
+  <header>
+    <div class="header-wrap">
+      <div class="brand">
+        <img src="images/logo.jpg" alt="Logo" style="height:36px;width:36px;border-radius:50%;object-fit:cover;border:1px solid var(--red)">
+        Ay Fireworks & Events
+        <span>Manager</span>
+      </div>
+      <div class="header-actions">
+        <span class="user-badge" id="userBadge">
+          👤 <span id="userEmailText">oyinloye994@gmail.com</span>
+        </span>
+        <a href="/download-logo" download="ay-fireworks-logo.jpg" class="btn ghost sm">💾 Download Logo</a>
+        <a href="/" target="_blank" class="btn ghost sm">👁️ View Live Storefront</a>
+        <button type="button" class="btn sm danger" onclick="handleLogout()">🚪 Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <input type="file" id="standaloneFileInput" accept="image/*">
+
+<main class="wrap">
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat-card">
+      <div class="stat-num" id="statTotal">0</div>
+      <div class="stat-label">Total Products</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statOk" style="color:var(--ok)">0</div>
+      <div class="stat-label">In Stock (Available)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statLow" style="color:var(--low)">0</div>
+      <div class="stat-label">Few Left</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statOut" style="color:var(--out)">0</div>
+      <div class="stat-label">Sold Out</div>
+    </div>
+  </section>
+
+  <div class="dashboard-grid">
+    <!-- Left Column: Add Product Form -->
+    <aside>
+      <div class="form-card">
+        <h2>Add New Product</h2>
+        <p class="subtitle">Add an item with picture, name, category, and availability.</p>
+
+        <form id="addProductForm">
+          <div class="form-group">
+            <label for="pName">Product Name *</label>
+            <input type="text" id="pName" placeholder="e.g. 50 Shot Golden Willow" required>
+          </div>
+
+          <div class="form-group">
+            <label for="pCat">Category *</label>
+            <input list="categoryList" id="pCat" placeholder="Select or type category..." required>
+            <datalist id="categoryList">
+              <option value="Cakes">
+              <option value="Display shots">
+              <option value="Novelty and singles">
+              <option value="Smoke">
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label for="pStatus">Stock Status</label>
+            <select id="pStatus">
+              <option value="ok">Available (In Stock)</option>
+              <option value="low">Few left</option>
+              <option value="out">Sold out</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Product Image</label>
+            <div class="dropzone" id="dropzoneNew">
+              <input type="file" id="pImageFile" accept="image/*">
+              <div class="dropzone-icon">📷</div>
+              <div class="dropzone-text">Click to choose image or drag here</div>
+              <div class="dropzone-sub">JPG, PNG, WEBP, or GIF (up to 15MB)</div>
+            </div>
+            <div class="preview-container" id="newPreviewBox">
+              <img id="newPreviewImg" class="preview-img" alt="Preview">
+              <button type="button" class="remove-preview" id="clearNewPreview">&times;</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn" style="width:100%" id="submitAddBtn">
+            <span>➕ Add Product to Catalog</span>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- Right Column: Product Management & Quick Uploads -->
+    <section>
+      <div class="list-header">
+        <div>
+          <h2>Products Catalog</h2>
+          <p style="color:var(--mute); font-size:13px; margin-top:2px;">
+            Hover any card or tap <b>Upload Pic</b> to change pictures instantly.
+          </p>
+        </div>
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Search by name or category...">
+        </div>
+      </div>
+
+      <div class="category-filter" id="filterTabs">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Products rendered here -->
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Edit Product Modal -->
+<div class="modal-backdrop" id="editModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Edit Product</h3>
+      <button class="modal-close" id="closeEditModal">&times;</button>
+    </div>
+
+    <form id="editProductForm">
+      <input type="hidden" id="editId">
+      <div class="form-group">
+        <label for="editName">Product Name *</label>
+        <input type="text" id="editName" required>
+      </div>
+      <div class="form-group">
+        <label for="editCat">Category *</label>
+        <input list="categoryList" id="editCat" required>
+      </div>
+      <div class="form-group">
+        <label for="editStatus">Stock Status</label>
+        <select id="editStatus">
+          <option value="ok">Available</option>
+          <option value="low">Few left</option>
+          <option value="out">Sold out</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Replace Image (Optional)</label>
+        <div class="dropzone" id="dropzoneEdit">
+          <input type="file" id="editImageFile" accept="image/*">
+          <div class="dropzone-icon">🔄</div>
+          <div class="dropzone-text">Choose a new image to replace</div>
+          <div class="dropzone-sub">Leave empty to keep current picture</div>
+        </div>
+        <div class="preview-container" id="editPreviewBox">
+          <img id="editPreviewImg" class="preview-img" alt="Preview">
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <button type="submit" class="btn" style="flex:1" id="saveEditBtn">Save Changes</button>
+        <button type="button" class="btn ghost" id="cancelEditBtn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div> <!-- /dashboardApp -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Authentication helpers
+const TOKEN_KEY = "ay_admin_token";
+const getAuthToken = () => localStorage.getItem(TOKEN_KEY) || "";
+const setAuthToken = (t) => localStorage.setItem(TOKEN_KEY, t);
+const clearAuthToken = () => localStorage.removeItem(TOKEN_KEY);
+
+const loginOverlay = document.getElementById("loginOverlay");
+const dashboardApp = document.getElementById("dashboardApp");
+const loginForm = document.getElementById("loginForm");
+const loginEmail = document.getElementById("loginEmail");
+const loginPassword = document.getElementById("loginPassword");
+const loginError = document.getElementById("loginError");
+const loginSubmitBtn = document.getElementById("loginSubmitBtn");
+const togglePasswordBtn = document.getElementById("togglePasswordBtn");
+const userEmailText = document.getElementById("userEmailText");
+
+// Toggle password visibility
+togglePasswordBtn.addEventListener("click", () => {
+  if (loginPassword.type === "password") {
+    loginPassword.type = "text";
+    togglePasswordBtn.textContent = "🙈";
+  } else {
+    loginPassword.type = "password";
+    togglePasswordBtn.textContent = "👁️";
+  }
+});
+
+// Show / Hide screens
+function showDashboard(email) {
+  loginOverlay.style.display = "none";
+  dashboardApp.style.display = "block";
+  if (email && userEmailText) userEmailText.textContent = email;
+}
+
+function showLogin() {
+  loginOverlay.style.display = "flex";
+  dashboardApp.style.display = "none";
+}
+
+window.handleLogout = function() {
+  clearAuthToken();
+  loginPassword.value = "";
+  loginError.style.display = "none";
+  showLogin();
+  showToast("Logged out successfully");
+};
+
+// Handle login submit
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = loginEmail.value.trim();
+  const password = loginPassword.value;
+
+  loginError.style.display = "none";
+  loginSubmitBtn.disabled = true;
+  loginSubmitBtn.textContent = "Authenticating...";
+
+  try {
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await res.json();
+
+    if (data.success && data.token) {
+      setAuthToken(data.token);
+      showDashboard(data.user?.email || email);
+      fetchProducts();
+      showToast("Welcome back, Admin!");
+    } else {
+      loginError.textContent = data.error || "Invalid email or password";
+      loginError.style.display = "block";
+    }
+  } catch (err) {
+    loginError.textContent = "Failed to connect to server. Please try again.";
+    loginError.style.display = "block";
+  } finally {
+    loginSubmitBtn.disabled = false;
+    loginSubmitBtn.textContent = "Sign In to Dashboard";
+  }
+});
+
+// Verify authentication status on load
+async function checkAuth() {
+  const token = getAuthToken();
+  if (!token) {
+    showLogin();
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/auth/verify", {
+      headers: { "Authorization": `Bearer ${token}` },
+    });
+    const data = await res.json();
+    if (data.success && data.authenticated) {
+      showDashboard(data.user?.email || "oyinloye994@gmail.com");
+      fetchProducts();
+    } else {
+      clearAuthToken();
+      showLogin();
+    }
+  } catch (err) {
+    showLogin();
+  }
+}
+
+let products = [];
+let activeCat = "All";
+let searchQuery = "";
+let targetProductIdForQuickUpload = null;
+
+const STATUS_MAP = { ok: "Available", low: "Few left", out: "Sold out" };
+
+// Elements
+const productsGrid = document.getElementById("productsGrid");
+const filterTabs = document.getElementById("filterTabs");
+const searchInput = document.getElementById("searchInput");
+const addProductForm = document.getElementById("addProductForm");
+const standaloneFileInput = document.getElementById("standaloneFileInput");
+
+// Stats elements
+const statTotal = document.getElementById("statTotal");
+const statOk = document.getElementById("statOk");
+const statLow = document.getElementById("statLow");
+const statOut = document.getElementById("statOut");
+
+// Preview elements for Add Form
+const pImageFile = document.getElementById("pImageFile");
+const newPreviewBox = document.getElementById("newPreviewBox");
+const newPreviewImg = document.getElementById("newPreviewImg");
+const clearNewPreview = document.getElementById("clearNewPreview");
+
+// Edit modal elements
+const editModal = document.getElementById("editModal");
+const editProductForm = document.getElementById("editProductForm");
+const closeEditModal = document.getElementById("closeEditModal");
+const cancelEditBtn = document.getElementById("cancelEditBtn");
+const editImageFile = document.getElementById("editImageFile");
+const editPreviewBox = document.getElementById("editPreviewBox");
+const editPreviewImg = document.getElementById("editPreviewImg");
+
+// Toast helper
+function showToast(msg, isError = false) {
+  const toast = document.getElementById("toast");
+  toast.textContent = msg;
+  toast.className = "toast show" + (isError ? " error" : "");
+  setTimeout(() => { toast.className = "toast"; }, 3500);
+}
+
+// Image Preview for New Product
+pImageFile.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      newPreviewImg.src = evt.target.result;
+      newPreviewBox.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  } else {
+    newPreviewBox.style.display = "none";
+  }
+});
+clearNewPreview.addEventListener("click", () => {
+  pImageFile.value = "";
+  newPreviewBox.style.display = "none";
+});
+
+// Image Preview for Edit Modal
+editImageFile.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      editPreviewImg.src = evt.target.result;
+      editPreviewBox.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Fetch products from backend
+async function fetchProducts() {
+  try {
+    const res = await fetch("/api/products");
+    const json = await res.json();
+    if (json.success) {
+      products = json.data;
+      updateStats();
+      updateCategoriesDatalist();
+      renderFilters();
+      renderProducts();
+    }
+  } catch (err) {
+    console.error("Failed to load products:", err);
+    showToast("Failed to connect to backend server", true);
+  }
+}
+
+// Update stats
+function updateStats() {
+  statTotal.textContent = products.length;
+  statOk.textContent = products.filter(p => p.status === "ok").length;
+  statLow.textContent = products.filter(p => p.status === "low").length;
+  statOut.textContent = products.filter(p => p.status === "out").length;
+}
+
+// Update categories datalist
+function updateCategoriesDatalist() {
+  const cats = Array.from(new Set(products.map(p => p.cat).filter(Boolean)));
+  const datalist = document.getElementById("categoryList");
+  datalist.innerHTML = cats.map(c => `<option value="${c}">`).join("");
+}
+
+// Render category filter tabs
+function renderFilters() {
+  const cats = ["All", ...new Set(products.map(p => p.cat).filter(Boolean))];
+  filterTabs.innerHTML = cats.map(c => `
+    <button class="filter-btn ${c === activeCat ? 'active' : ''}" onclick="setFilter('${c}')">
+      ${c}
+    </button>
+  `).join("");
+}
+
+window.setFilter = function(cat) {
+  activeCat = cat;
+  renderFilters();
+  renderProducts();
+};
+
+// Search listener
+searchInput.addEventListener("input", (e) => {
+  searchQuery = e.target.value.toLowerCase().trim();
+  renderProducts();
+});
+
+// Render Products Grid
+function renderProducts() {
+  const filtered = products.filter(p => {
+    const matchCat = activeCat === "All" || p.cat === activeCat;
+    const matchSearch = !searchQuery || 
+      (p.name && p.name.toLowerCase().includes(searchQuery)) ||
+      (p.cat && p.cat.toLowerCase().includes(searchQuery));
+    return matchCat && matchSearch;
+  });
+
+  if (filtered.length === 0) {
+    productsGrid.innerHTML = `
+      <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--mute);">
+        No products found. Add your first item using the form on the left!
+      </div>`;
+    return;
+  }
+
+  productsGrid.innerHTML = filtered.map(p => {
+    const initials = (p.name || "P").split(" ").slice(0, 2).join(" ");
+    const hasImage = p.image && p.image.trim() !== "";
+    const imgSrc = hasImage ? `/images/${p.image}` : "";
+
+    return `
+      <article class="product-card" id="card-${p.id}">
+        <div class="product-media" onclick="triggerQuickUpload('${p.id}')">
+          <span class="status-pill ${p.status}">${STATUS_MAP[p.status] || p.status}</span>
+          ${hasImage 
+            ? `<img src="${imgSrc}" alt="${p.name}" onerror="this.onerror=null; this.replaceWith(createFallback('${initials}'));">` 
+            : `<div class="product-ph">${initials}</div>`
+          }
+          <div class="quick-upload-overlay">
+            <span class="quick-upload-btn">📷 Change Picture</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">${p.name}</div>
+          <div class="product-cat">${p.cat || "Novelty and singles"}</div>
+          <div class="product-actions">
+            <button class="btn sm ghost" onclick="triggerQuickUpload('${p.id}')" title="Upload new picture">📷 Pic</button>
+            <button class="btn sm ghost" onclick="openEdit('${p.id}')" title="Edit product details">✏️ Edit</button>
+            <button class="btn sm danger" onclick="deleteProduct('${p.id}', '${p.name.replace(/'/g, "\\'")}')" title="Delete">🗑️</button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function createFallback(initials) {
+  const div = document.createElement("div");
+  div.className = "product-ph";
+  div.textContent = initials;
+  return div;
+}
+
+// Quick Upload Image handler
+window.triggerQuickUpload = function(productId) {
+  targetProductIdForQuickUpload = productId;
+  standaloneFileInput.value = "";
+  standaloneFileInput.click();
+};
+
+standaloneFileInput.addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file || !targetProductIdForQuickUpload) return;
+
+  const formData = new FormData();
+  formData.append("image", file);
+
+  try {
+    showToast("Uploading image...");
+    const res = await fetch(`/api/products/${targetProductIdForQuickUpload}/image`, {
+      method: "POST",
+      headers: { "Authorization": `Bearer ${getAuthToken()}` },
+      body: formData,
+    });
+    if (res.status === 401) {
+      showToast("Session expired. Please log in again.", true);
+      handleLogout();
+      return;
+    }
+    const result = await res.json();
+    if (result.success) {
+      showToast("Image uploaded successfully!");
+      fetchProducts();
+    } else {
+      showToast(result.error || "Upload failed", true);
+    }
+  } catch (err) {
+    showToast("Server connection error", true);
+  } finally {
+    targetProductIdForQuickUpload = null;
+    standaloneFileInput.value = "";
+  }
+});
+
+// Add New Product Form Submit
+addProductForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const name = document.getElementById("pName").value.trim();
+  const cat = document.getElementById("pCat").value.trim();
+  const status = document.getElementById("pStatus").value;
+  const imageFile = pImageFile.files[0];
+
+  if (!name) {
+    showToast("Product name is required", true);
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("cat", cat || "Novelty and singles");
+  formData.append("status", status);
+  if (imageFile) {
+    formData.append("image", imageFile);
+  }
+
+  const btn = document.getElementById("submitAddBtn");
+  btn.disabled = true;
+  btn.innerHTML = "Saving...";
+
+  try {
+    const res = await fetch("/api/products", {
+      method: "POST",
+      headers: { "Authorization": `Bearer ${getAuthToken()}` },
+      body: formData,
+    });
+    if (res.status === 401) {
+      showToast("Session expired. Please log in again.", true);
+      handleLogout();
+      return;
+    }
+    const result = await res.json();
+
+    if (result.success) {
+      showToast(`Product "${name}" added!`);
+      addProductForm.reset();
+      newPreviewBox.style.display = "none";
+      fetchProducts();
+    } else {
+      showToast(result.error || "Failed to add product", true);
+    }
+  } catch (err) {
+    showToast("Failed to connect to server", true);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = "<span>➕ Add Product to Catalog</span>";
+  }
+});
+
+// Edit Product Modal
+window.openEdit = function(id) {
+  const p = products.find(prod => prod.id === id);
+  if (!p) return;
+
+  document.getElementById("editId").value = p.id;
+  document.getElementById("editName").value = p.name;
+  document.getElementById("editCat").value = p.cat;
+  document.getElementById("editStatus").value = p.status;
+  editImageFile.value = "";
+
+  if (p.image) {
+    editPreviewImg.src = `/images/${p.image}`;
+    editPreviewBox.style.display = "block";
+  } else {
+    editPreviewBox.style.display = "none";
+  }
+
+  editModal.classList.add("open");
+};
+
+closeEditModal.addEventListener("click", () => editModal.classList.remove("open"));
+cancelEditBtn.addEventListener("click", () => editModal.classList.remove("open"));
+
+editProductForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const id = document.getElementById("editId").value;
+  const name = document.getElementById("editName").value.trim();
+  const cat = document.getElementById("editCat").value.trim();
+  const status = document.getElementById("editStatus").value;
+  const newFile = editImageFile.files[0];
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("cat", cat);
+  formData.append("status", status);
+  if (newFile) {
+    formData.append("image", newFile);
+  }
+
+  const btn = document.getElementById("saveEditBtn");
+  btn.disabled = true;
+  btn.textContent = "Saving...";
+
+  try {
+    const res = await fetch(`/api/products/${id}`, {
+      method: "PUT",
+      headers: { "Authorization": `Bearer ${getAuthToken()}` },
+      body: formData,
+    });
+    if (res.status === 401) {
+      showToast("Session expired. Please log in again.", true);
+      handleLogout();
+      return;
+    }
+    const result = await res.json();
+
+    if (result.success) {
+      showToast("Product updated successfully!");
+      editModal.classList.remove("open");
+      fetchProducts();
+    } else {
+      showToast(result.error || "Failed to update", true);
+    }
+  } catch (err) {
+    showToast("Server error during update", true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Save Changes";
+  }
+});
+
+// Delete Product
+window.deleteProduct = async function(id, name) {
+  if (!confirm(`Are you sure you want to delete "${name}"?`)) return;
+
+  try {
+    const res = await fetch(`/api/products/${id}`, { 
+      method: "DELETE",
+      headers: { "Authorization": `Bearer ${getAuthToken()}` },
+    });
+    if (res.status === 401) {
+      showToast("Session expired. Please log in again.", true);
+      handleLogout();
+      return;
+    }
+    const result = await res.json();
+
+    if (result.success) {
+      showToast(`Deleted "${name}"`);
+      fetchProducts();
+    } else {
+      showToast(result.error || "Delete failed", true);
+    }
+  } catch (err) {
+    showToast("Server connection error", true);
+  }
+};
+
+// Initial authentication check
+checkAuth();
+</script>
+</body>
+</html>

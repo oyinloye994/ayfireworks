@@ -1,0 +1,139 @@
+[
+  {
+    "id": "color-flower-9505",
+    "name": "Color Flower",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "red-firecracker-pack-with-starburst-labels-1794407586757-6355.png",
+    "price": "",
+    "description": "",
+    "createdAt": "2026-11-11T14:29:49.505Z",
+    "updatedAt": "2026-11-11T14:33:06.774Z"
+  },
+  {
+    "id": "25-shot-cake",
+    "name": "25 Shot Cake",
+    "cat": "Cakes",
+    "status": "ok",
+    "image": "colour-cake-fireworks-stack-1794408149764-2263.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:42:29.782Z"
+  },
+  {
+    "id": "49-shot-cake",
+    "name": "49 Shot Cake",
+    "cat": "Cakes",
+    "status": "ok",
+    "image": "golden-shores-fireworks-stack-1794408122460-6571.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:42:02.491Z"
+  },
+  {
+    "id": "100-shot-cake",
+    "name": "100 Shot Cake",
+    "cat": "Cakes",
+    "status": "ok",
+    "image": "ultimate-celebration-fireworks-cake-1794408179518-139.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:42:59.538Z"
+  },
+  {
+    "id": "5-shot-display",
+    "name": "5 Shot Display",
+    "cat": "Display shots",
+    "status": "ok",
+    "image": "colorful-roman-candle-fireworks-pack-1-1794407887584-9383.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:38:07.597Z"
+  },
+  {
+    "id": "8-shot-display",
+    "name": "8 Shot Display",
+    "cat": "Display shots",
+    "status": "ok",
+    "image": "colorful-roman-candle-fireworks-pack-2-1794408342383-8121.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:45:42.394Z"
+  },
+  {
+    "id": "10-shot-display",
+    "name": "10 Shot Display",
+    "cat": "Display shots",
+    "status": "ok",
+    "image": "colorful-roman-candle-fireworks-packaging-1794408214677-8025.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:43:34.689Z"
+  },
+  {
+    "id": "12-shot-display",
+    "name": "12 Shot Display",
+    "cat": "Display shots",
+    "status": "ok",
+    "image": "colorful-triple-roman-candle-fireworks-pack-1-1794407806767-5130.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:36:46.778Z"
+  },
+  {
+    "id": "10-ball",
+    "name": "10 Ball",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "colorful-roman-candle-fireworks-pack-1794407844336-2156.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:37:24.348Z"
+  },
+  {
+    "id": "dadi-single-voice",
+    "name": "Dadi Single Voice",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "dadi-single100-red-fireworks-box-1794408585592-8529.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:49:45.605Z"
+  },
+  {
+    "id": "black-widow",
+    "name": "Black Widow",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "black-widow-crown-fireworks-box-1794408548604-491.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:49:08.626Z"
+  },
+  {
+    "id": "crazy-robot",
+    "name": "Crazy Robot",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "crazy-robot-fireworks-box-1-1794408482876-4782.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:48:02.893Z"
+  },
+  {
+    "id": "celebration-thunder",
+    "name": "Celebration Thunder",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "celebration-cracker-thunder-fireworks-box-1794408448785-5823.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:47:28.801Z"
+  },
+  {
+    "id": "super-god-of-war",
+    "name": "Super God of War",
+    "cat": "Novelty and singles",
+    "status": "ok",
+    "image": "super-god-of-war-fireworks-box-1-1794408517470-4500.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:48:37.490Z"
+  },
+  {
+    "id": "color-smoke",
+    "name": "Color Smoke",
+    "cat": "Smoke",
+    "status": "ok",
+    "image": "colorful-fireworks-display-assortment-1794407578167-3617.png",
+    "createdAt": "2026-11-11T12:00:00.000Z",
+    "updatedAt": "2026-11-11T14:32:58.185Z"
+  }
+]
